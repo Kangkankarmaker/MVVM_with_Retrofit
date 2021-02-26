@@ -47,19 +47,18 @@ public class MovieApiClient {
 
         if (retrieveMoviesRunnable!=null){
             retrieveMoviesRunnable=null;
-
         }
 
         retrieveMoviesRunnable=new RetrieveMoviesRunnable(query,pageNumber);
 
-        final Future myHandlar= AppExecutors.getInstance().networkIO().submit(retrieveMoviesRunnable);
+        final Future myHandler= AppExecutors.getInstance().networkIO().submit(retrieveMoviesRunnable);
 
         AppExecutors.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
-                myHandlar.cancel(true);
+                myHandler.cancel(true);
             }
-        },3000, TimeUnit.MILLISECONDS);
+        },5000, TimeUnit.MILLISECONDS);
     }
 
     private class RetrieveMoviesRunnable implements Runnable{

@@ -14,10 +14,4 @@ public class MovieResponse {
         return movie;
     }
 
-    @Override
-    public String toString() {
-        return "MovieResponse{" +
-                "movie=" + movie +
-                '}';
-    }
 }

@@ -25,11 +25,4 @@ public class MovieSearchResponse {
         return results;
     }
 
-    @Override
-    public String toString() {
-        return "MovieSearchResponse{" +
-                "total_result=" + total_results +
-                ", movies=" + results +
-                '}';
-    }
 }
