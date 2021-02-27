@@ -12,6 +12,9 @@ public class MovieRepository {
 
     private MovieApiClient movieApiClient;
 
+    private String mQuery;
+    private int mPageNum;
+
     public static MovieRepository getInstance(){
         if (instance==null){
             instance=new MovieRepository();
@@ -26,7 +29,12 @@ public class MovieRepository {
     public LiveData<List<MovieModel>>getMovies(){return movieApiClient.getMovies();}
 
     public void searchMovieApi(String query,int pageNumber){
+        mQuery=query;
+        mPageNum=pageNumber;
         movieApiClient.SearchMovieApi(query,pageNumber);
+    }
 
+    public void SearchNextPage(){
+        movieApiClient.SearchMovieApi(mQuery,mPageNum+1);
     }
 }

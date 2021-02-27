@@ -1,5 +1,6 @@
 package k.example.mvvmandretrofit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -71,8 +72,20 @@ public class MovieListActivity extends AppCompatActivity implements MovieRecycle
     private void ConfigureRecyclerView(){
         movieRecycleViewAdapter=new MovieRecycleView(this,this);
         rv_movie_list.setAdapter(movieRecycleViewAdapter);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL);
-        rv_movie_list.setLayoutManager(new LinearLayoutManager(this));
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
+        rv_movie_list.setLayoutManager(staggeredGridLayoutManager);
+
+
+        rv_movie_list.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+
+                if (!recyclerView.canScrollVertically(1)){
+                    movieListViewModel.SearchNextPage();
+                }
+            }
+        });
+
     }
 
     @Override
