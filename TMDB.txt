@@ -1,0 +1,12 @@
+https://api.themoviedb.org/3/movie/550?api_key=3033b54492382fb5cfa0d8c285999c47
+
+search
+https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+
+details
+
+https://api.themoviedb.org/3/movie/343611?api_key={api_key}
+https://api.themoviedb.org/3/movie/343611?api_key={api_key}&append_to_response=videos
+
+images
+https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
